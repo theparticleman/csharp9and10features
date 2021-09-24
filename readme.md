@@ -7,3 +7,5 @@ C# 10 is currently in release preview. It is supported in .NET 6 and above which
 [C# 9 Features](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-9)
 
 [C# 10 Features](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-10)
+
+For examples of C# 7 and 8 features, you can check out [this repo](https://github.com/theparticleman/csharpfeatures).
