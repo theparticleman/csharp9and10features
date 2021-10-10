@@ -15,3 +15,7 @@ Console.WriteLine("This is a top-level statement");
 //         }
 //     }
 // }
+
+// You can only have one top-level file in a project.
+// Having more than one or having a top-level file
+// and a Main method results in a compiler error.
