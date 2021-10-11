@@ -174,6 +174,11 @@ namespace csharp9and10features
                 (string stringVal, int intVal) = obj;
                 Assert.That(stringVal, Is.EqualTo("foo"));
                 Assert.That(intVal, Is.EqualTo(42));
+
+                // Using positional parameters generates a constructor,
+                // so you can't use an object initializer for positional parameters.
+                // The following line results in a compiler error.
+                // var obj2 = new PositionalParameterRecord { StringProperty = "bar", IntProperty = 43 };
             }
 
             [Test] public void RecordsCanHaveMethodsLikeNormalClasses()
