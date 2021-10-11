@@ -135,7 +135,7 @@ namespace csharp9and10features
             {
                 TypeWithoutAnEnumerator obj = new();
 
-                // TypeWithoutAnEnumertor does not have a GetEnumerator method, which is usually 
+                // TypeWithoutAnEnumerator does not have a GetEnumerator method, which is usually 
                 // needed to work with a foreach loop. But it has a GetEnumerator extension
                 // method, which is now also accepted.
                 foreach (var item in obj)
