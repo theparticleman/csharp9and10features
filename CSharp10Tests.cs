@@ -48,19 +48,6 @@ public class Csharp10Tests
         Assert.That(IsFamousWeasley(person1), Is.True);
         Assert.That(IsFamousWeasley(person2), Is.False);
 
-        // C# 10 adds this new, slightly easier syntax.
-        bool IsFamousWeasley(Person person)
-        {
-            if (person.Name.LastName != "Weasley") return false;
-            return person switch
-            {
-                { Name.FirstName: "Fred" } => true,
-                { Name.FirstName: "George" } => true,
-                { Name.FirstName: "Ron" } => true,
-                _ => false
-            };
-        }
-
         // You could do this in C# 8 and later.
         bool IsFamousWeasleyWithoutExtendedPropertyPatterns(Person person)
         {
@@ -70,6 +57,19 @@ public class Csharp10Tests
                 { Name: { FirstName: "Fred" } } => true,
                 { Name: { FirstName: "George" } } => true,
                 { Name: { FirstName: "Ron" } } => true,
+                _ => false
+            };
+        }
+
+        // C# 10 adds this new, slightly easier syntax.
+        bool IsFamousWeasley(Person person)
+        {
+            if (person.Name.LastName != "Weasley") return false;
+            return person switch
+            {
+                { Name.FirstName: "Fred" } => true,
+                { Name.FirstName: "George" } => true,
+                { Name.FirstName: "Ron" } => true,
                 _ => false
             };
         }
@@ -109,6 +109,14 @@ public class Csharp10Tests
         (id1, name1) = person;
         Assert.That(id1, Is.EqualTo(42));
         Assert.That(name1.FirstName, Is.EqualTo("Tony"));
+
+        // Or with a value tuple
+        int val1;
+        string val2;
+        var tuple = (42, "foo");
+        (val1, val2) = tuple;
+        Assert.That(val1, Is.EqualTo(42));
+        Assert.That(val2, Is.EqualTo("foo"));
 
         // Or this:
         (int id2, Name name2) = person;
