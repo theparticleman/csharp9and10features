@@ -116,15 +116,15 @@ namespace csharp9and10features
                 // Lambda expressions and anonymous methods can now be marked static.
                 // If they are marked static they can't capture local variables or instance variables.
                 var list = new List<int> { 1, 2, 3, 4 };
-                var someLocallyScoredVariable = 3;
+                var someLocallyScopedVariable = 3;
 
                 // A non-static lambda expression can capture local variables.
-                var result = list.Where(x => x > someLocallyScoredVariable);
+                var result = list.Where(x => x > someLocallyScopedVariable);
                 Assert.That(result, Is.EqualTo(new[] { 4 }));
 
                 // A static lambda expression cannot capture local variables.
                 // This statement results in a compiler error
-                // var result2 = list.Where(static x => x > someLocallyScoredVariable);
+                // var result2 = list.Where(static x => x > someLocallyScopedVariable);
 
                 // A static lambda that does not use local variables is valid.
                 var result3 = list.Where(static x => x > 3);
