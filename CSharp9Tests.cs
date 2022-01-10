@@ -18,6 +18,10 @@ namespace csharp9and10features
                 // obj.MyProperty = 43;
 
                 // init properties can also be set in a class constructor.
+
+                // An init property is not required to be set.
+                var obj2 = new InitOnlySettersClass();
+                Assert.That(obj2.MyProperty, Is.EqualTo(default(int)));
             }
 
             class InitOnlySettersClass
