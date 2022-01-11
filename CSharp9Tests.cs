@@ -10,8 +10,18 @@ namespace csharp9and10features
         {
             [Test] public void InitOnlySettersExample()
             {
-                var obj = new InitOnlySettersClass { MyProperty = 42 };
+                // Readonly properties that can only be set in the
+                // constructor have been available in C# for a while.
+                var readonlyObj = new ReadonlyPropertyClass(42);
+                Assert.That(readonlyObj.MyProperty, Is.EqualTo(42));
 
+                // Readonly properties can only be set in the constructor,
+                // not in an object initializer.
+                // var thisDoesNotWork = new ReadonlyPropertyClass { MyProperty = 42 };
+
+                // Init properties allow setting a property in the
+                // constructor or in an object initializer.
+                var obj = new InitOnlySettersClass { MyProperty = 42 };
                 Assert.That(obj.MyProperty, Is.EqualTo(42));
 
                 // Trying to set an init property after initialization time results in a compiler error.
@@ -27,6 +37,15 @@ namespace csharp9and10features
             class InitOnlySettersClass
             {
                 public int MyProperty { get; init; } 
+            }
+
+            class ReadonlyPropertyClass
+            {
+                public int MyProperty { get; }
+                public ReadonlyPropertyClass(int value)
+                {
+                    MyProperty = value;
+                }
             }
         }
     
